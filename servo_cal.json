@@ -1,0 +1,36 @@
+{
+  "servos": {
+    "0": {
+      "min_ms": 1.9,
+      "max_ms": 2.55,
+      "center_ms": 1.9
+    },
+    "1": {
+      "min_ms": 1.0,
+      "max_ms": 2.75,
+      "center_ms": 1.95
+    }
+  },
+  "pwm_freq": 60,
+  "camera_height_ft": 6.0,
+  "channels": {
+    "tilt": 0,
+    "pan": 1
+  },
+  "desired_arena": {
+    "pan_min_rad": -0.9599310885968813,
+    "pan_max_rad": 0.9599310885968813,
+    "dist_min_ft": 2.0,
+    "dist_max_ft": 8.0
+  },
+  "0": {
+    "min_ms": 0.61,
+    "max_ms": 2.93,
+    "center_ms": 1.83
+  },
+  "1": {
+    "min_ms": 0.64,
+    "max_ms": 2.91,
+    "center_ms": 1.69
+  }
+}
