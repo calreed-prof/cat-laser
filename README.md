@@ -30,21 +30,29 @@ free of YOLO inference jitter.
 
 ## Hardware
 
-- Raspberry Pi (tested on Bookworm, 64-bit)
-- Pi Camera Module (via Picamera2/libcamera)
+Built and tested on:
+
+- Raspberry Pi 4 (Bookworm, 64-bit)
+- Raspberry Pi 4 case
+- Arducam camera module (via Picamera2/libcamera)
+- Arducam pan-tilt camera mount kit (generic version, 2x SG90-class micro
+  servos)
 - PCA9685 PWM driver board over I2C, at address `0x40`
-- 2x standard hobby servos (pan + tilt) on PCA9685 channels 0 and 1
+- 2x standard hobby servos (pan + tilt) on PCA9685 channels 0 and 1 — these
+  drive the laser gimbal, separate from the pan-tilt kit's own servos, which
+  just hold the camera
 - A laser module driven from GPIO 17 through a transistor/driver — **never
   wire a laser diode directly to a GPIO pin**
 - I2C enabled: `raspi-config` → Interface Options → I2C
 
 ## Setup
 
-This project uses [`uv`](https://docs.astral.sh/uv/) for dependency
-management (`pyproject.toml` / `uv.lock` are both committed).
+This project uses `pip` with `pyproject.toml` for dependency management.
 
 ```bash
-uv sync
+python -m venv .venv
+source .venv/bin/activate
+pip install -e .
 ```
 
 Dependencies include `ultralytics` (YOLO), `adafruit-circuitpython-servokit`,
@@ -58,9 +66,9 @@ calibration live in `servo_cal.json`. Before running anything that moves the
 servos:
 
 ```bash
-uv run python laser_cal.py       # interactive min/max/center tuning per servo
-uv run python corner_bounce.py   # sanity-check the resulting play-box corners
-uv run python choreographer.py --sweep   # walk pan/tilt limits, laser off
+python laser_cal.py       # interactive min/max/center tuning per servo
+python corner_bounce.py   # sanity-check the resulting play-box corners
+python choreographer.py --sweep   # walk pan/tilt limits, laser off
 ```
 
 **Tilt is the eye-safety axis.** Center is horizontal (eye level); the
@@ -73,7 +81,7 @@ limits — check it by hand.
 ## Running it
 
 ```bash
-uv run python main.py
+python main.py
 ```
 
 Watches the camera for a cat (YOLOv8n, COCO class "cat", polled every few
