@@ -49,8 +49,8 @@ from primitives import Aim, load_calibration
 # ---------------------------------------------------------------------------
 CAT_CLASS = 15          # COCO class id for "cat"
 MODEL_PATH = "yolov8n.onnx"
-POLL_INTERVAL = 3.0     # seconds between frames while idle/watching
-CONFIDENCE = 0.5
+POLL_INTERVAL = 0.5     # seconds between frames while idle/watching
+CONFIDENCE = 0.2
 FRAME_SIZE = (640, 640)
 
 

@@ -55,7 +55,7 @@ DT = 1.0 / UPDATE_HZ
 # with `--sweep` before running near anyone. If the dot sweeps UP instead of
 # down, flip the tilt signs here (and swap TILT_MIN/TILT_MAX) — not in the
 # math. Nothing enforces any of this at runtime; it's open-loop. Check by hand.
-PAN_MIN, PAN_MAX = -0.65, -0.2     # ~+-58 deg about forward
+PAN_MIN, PAN_MAX = -0.65, -0.3     # ~+-58 deg about forward
 TILT_MIN, TILT_MAX = -0.55, 0.55    # ~27 deg to ~77 deg BELOW horizontal (down only)
 
 PAN_SPAN = PAN_MAX - PAN_MIN
